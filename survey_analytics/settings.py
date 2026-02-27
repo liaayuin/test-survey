@@ -27,7 +27,17 @@ SECRET_KEY = 'django-insecure-msax$hsnk&0z&+1ehtv+lb@qcpi6s8aeqe!afu8+v*l*mz_lq)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.onrender.com']
+# ALLOWED_HOSTS = ['.onrender.com', '127.0.0.1', 'localhost']
+ON_RENDER = 'RENDER' in os.environ
+
+if ON_RENDER:
+    DEBUG = False
+    ALLOWED_HOSTS = ['.onrender.com']
+    # Production storage
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+else:
+    DEBUG = True
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -120,6 +130,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles' 
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_DIRS = [
     BASE_DIR / "analytics/static",
