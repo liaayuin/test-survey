@@ -1,0 +1,21 @@
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+__pycache__/
+local_settings.py
+db.sqlite3
+staticfiles/
+media/
+
+# OS/IDE junk
+.DS_Store
+.vscode/
+.idea/
+venv/
+env/
+ENV/
+
+# Production
+.env
+requirements.txt.bak

@@ -1,0 +1,155 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Youth Network Ethiopia | Analytics Hub</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'analytics/css/style.css' %}" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="{% static 'analytics/js/dashboard.js' %}"></script>
+  </head>
+  <body>
+    <nav class="navbar-glass mb-5">
+      <div class="container d-flex justify-content-between align-items-center">
+        <span class="brand-logo">Youth Network Ethiopia Survey Analysis</span>
+        {% comment %}
+        <div class="d-none d-md-block">
+          <span class="pulse"></span>
+          <small style="color: var(--text-dim)"
+            >LIVE SYSTEM STATUS: OPTIMAL</small
+          >
+        </div>
+        {% endcomment %}
+      </div>
+    </nav>
+
+    <div class="container pb-5" id="report-content">
+      <div class="row g-4 mb-5">
+        <div class="col-md-3">
+          <div class="stat-card">
+            <small>Total Participants</small>
+            <h2 id="total-val">0</h2>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card">
+            <small>Engagement Rate</small>
+            <h2 id="engagement-val" style="color: var(--accent-purple)">0%</h2>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-card">
+            <small>Brand Awareness</small>
+            <h2 id="awareness-val" style="color: var(--accent-blue)">0%</h2>
+          </div>
+        </div>
+        <div class="col-md-3" id="download-pdf" style="cursor: pointer">
+          <div
+            class="stat-card"
+            style="
+              background: linear-gradient(135deg, #6366f1, #a855f7);
+              border: none;
+            "
+          >
+            <small style="color: white; opacity: 0.8">Action Center</small>
+            <h2 style="font-size: 1rem; margin-top: 15px; color: white">
+              Generate PDF Report →
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="row g-4 mb-4">
+        <div class="col-lg-6">
+          <div class="chart-container">
+            <div class="section-title">Age Distribution</div>
+            <div class="canvas-holder">
+              <canvas id="ageChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="chart-container">
+            <div class="section-title">Regional Origin (Sub-cities)</div>
+            <div class="canvas-holder">
+              <canvas id="subcityChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-4 mb-4">
+        <div class="col-lg-4">
+          <div class="chart-container">
+            <div class="section-title">Gender Distribution</div>
+            <div class="canvas-holder">
+              <canvas id="genderChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-8">
+          <div class="chart-container">
+            <div class="section-title">Critical Participation Barriers</div>
+            <div class="canvas-holder">
+              <canvas id="barrierChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div class="col-12">
+          <div class="chart-container">
+            <div class="section-title">Training Demand Heatmap</div>
+            <div class="canvas-holder">
+              <canvas id="trainingChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div class="col-lg-6">
+          <div class="chart-container">
+            <div class="section-title">Awareness Channels</div>
+            <div class="canvas-holder">
+              <canvas id="awarenessChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="chart-container">
+            <div class="section-title">Education Background</div>
+            <div class="canvas-holder">
+              <canvas id="educationChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-12">
+          <div class="chart-container">
+            <div class="section-title">
+              Social Media Platforms Used for Training
+            </div>
+            <div class="canvas-holder">
+              <canvas id="platformChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
