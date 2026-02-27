@@ -40,6 +40,10 @@ else:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
+try: 
+    from .create_superuser import create_superuser; create_superuser()
+except Exception as e: 
+    print("Superuser creation skipped:", e)
 # Application definition
 
 INSTALLED_APPS = [
